@@ -8,11 +8,17 @@ export const resolvers: Resolvers = {
     tracksForHome: (_, __, { dataSources }) => {
       return dataSources.trackAPI.getTracksForHome();
     },
+    track: (_, { id }, { dataSources }) => {
+      return dataSources.trackAPI.getTrack(id);
+    },
   },
   Track: {
     // returns the information about the Track's author using the authorId
     author: ({ authorId }, _, { dataSources }) => {
       return dataSources.trackAPI.getAuthor(authorId);
+    },
+    modules: ({ id }, _, { dataSources }) => {
+      return dataSources.trackAPI.getTrackModules(id);
     },
   },
 };
